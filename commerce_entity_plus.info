@@ -1,0 +1,5 @@
+name = Commerce Entity+
+description = Enhancements to Drupal Commerce entities by providing structured entity classes.
+core = 7.x
+dependencies[] = commerce
+dependencies[] = entity
