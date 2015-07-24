@@ -1,11 +1,14 @@
 name = Commerce Entity+
 description = Enhancements to Drupal Commerce entities by providing structured entity classes.
 core = 7.x
+php = 5.4
+package = Commerce (contrib)
 dependencies[] = commerce
 dependencies[] = entity
 
 ; Class includes
 files[] = includes/commerce_entity.inc
+files[] = includes/commerce_traits.inc
 files[] = includes/commerce_exception.inc
 files[] = includes/commerce_customer_profile.inc
 files[] = includes/commerce_line_item.inc

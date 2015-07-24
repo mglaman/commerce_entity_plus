@@ -5,6 +5,9 @@
  * Base class for Commerce Entity+ classes
  */
 
+/**
+ * Interface CommerceEntityInterface
+ */
 interface CommerceEntityInterface {
   /**
    * Returns entity type.
@@ -14,7 +17,25 @@ interface CommerceEntityInterface {
   public function getEntityType();
 }
 
+/**
+ * Class CommerceEntity
+ */
 abstract class CommerceEntity extends Entity implements CommerceEntityInterface {
+
+  /**
+   * The created timestamp.
+   *
+   * @var string
+   */
+  public $created;
+
+  /**
+   * The changed timestamp.
+   *
+   * @var string
+   */
+  public $changed;
+
   /**
    * Data array stashed in most Commerce entities.
    *
@@ -47,6 +68,29 @@ abstract class CommerceEntity extends Entity implements CommerceEntityInterface 
     return $this->getEntityType();
   }
 
+  /**
+   * @return string
+   */
+  public function getCreated() {
+    return $this->created;
+  }
+
+  /**
+   * @return string
+   */
+  public function getChanged() {
+    return $this->changed;
+  }
+
+  /**
+   * @return array
+   */
+  public function getData($key = NULL) {
+    if ($key !== NULL) {
+      return (isset($this->data[$key])) ? $this->data[$key] : NULL;
+    }
+    return $this->data;
+  }
 
   /**
    * Helper method to get entity key data.
