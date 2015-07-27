@@ -37,6 +37,8 @@ install:
   - cd ..
   - git clone --branch 7.x --depth 1 http://git.drupal.org/project/drupal.git drupal
   - cd drupal
+  # Patch Drupal so it can index traits.
+  - curl https://www.drupal.org/files/issues/2508055-autoload-traits_0.patch | patch -p1
 
   # Disable sendmail (PHP)
   - if [[ $TRAVIS_PHP_VERSION != "hhvm" ]]; then echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
