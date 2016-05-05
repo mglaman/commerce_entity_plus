@@ -2,11 +2,11 @@
 
 /**
  * @file
- * Base class for Commerce Entity+ classes
+ * Base class for Commerce Entity classes.
  */
 
 /**
- * Interface CommerceEntityInterface
+ * Interface CommerceEntityInterface.
  */
 interface CommerceEntityInterface {
   /**
@@ -18,7 +18,7 @@ interface CommerceEntityInterface {
 }
 
 /**
- * Class CommerceEntity
+ * Class CommerceEntity.
  */
 abstract class CommerceEntity extends Entity implements CommerceEntityInterface {
 
@@ -106,26 +106,27 @@ abstract class CommerceEntity extends Entity implements CommerceEntityInterface 
   /**
    * Attempts to resolve object into entity data.
    *
-   * @param $data
+   * @param mixed $data
    *
    * @return \stdClass
+   *
    * @throws \CommerceException
    */
   protected function resolveEntity($data) {
-    $resolvedData = NULL;
+    $resolved_data = NULL;
     if ($data instanceof stdClass) {
-      $resolvedData = $data;
+      $resolved_data = $data;
     }
-    else if ($data instanceof EntityDrupalWrapper) {
-      $resolvedData = $data->value();
+    elseif ($data instanceof EntityDrupalWrapper) {
+      $resolved_data = $data->value();
     }
-    else if ($data instanceof CommerceEntity) {
-      $resolvedData = $data->getEntity();
+    elseif ($data instanceof CommerceEntity) {
+      $resolved_data = $data->getEntity();
     }
     else {
       throw new CommerceException(t('Unknown entity class type'));
     }
-    return $resolvedData;
+    return $resolved_data;
   }
 
   /**
@@ -133,7 +134,8 @@ abstract class CommerceEntity extends Entity implements CommerceEntityInterface 
    *
    * Mostly because doc block in Entity module doesn't type hint.
    *
-   * @param $name
+   * @param string $name
+   *
    * @return EntityMetadataWrapper
    */
   protected function wrapperGet($name) {
@@ -143,7 +145,7 @@ abstract class CommerceEntity extends Entity implements CommerceEntityInterface 
   /**
    * Return entity ID if being casted to a string.
    */
-  function __toString() {
+  public function __toString() {
     return $this->identifier();
   }
 }

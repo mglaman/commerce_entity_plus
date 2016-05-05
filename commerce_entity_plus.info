@@ -8,7 +8,6 @@ dependencies[] = entity
 
 ; Class includes
 files[] = includes/commerce_entity.inc
-files[] = includes/commerce_traits.inc
 files[] = includes/commerce_exception.inc
 files[] = includes/commerce_customer_profile.inc
 files[] = includes/commerce_line_item.inc

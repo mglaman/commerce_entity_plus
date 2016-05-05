@@ -9,7 +9,21 @@
  * Class CommercePaymentTransaction
  */
 class CommercePaymentTransaction extends CommerceEntity {
-  use CommerceEntityStatus, CommerceEntityUid, CommerceEntityRevisionId;
+
+  /**
+   * @var mixed
+   */
+  public $status;
+
+  /**
+   * @var int
+   */
+  public $uid;
+
+  /**
+   * @var int
+   */
+  public $revision_id;
 
   /**
    * @var
@@ -216,14 +230,42 @@ class CommercePaymentTransaction extends CommerceEntity {
   }
 
   /**
+   * @return mixed
+   */
+  public function getStatus() {
+    return $this->status;
+  }
+
+  /**
    * {@inheritdoc}
+   *
    * @throws CommerceException
    */
   public function setStatus($status) {
     if (!in_array($status, array(COMMERCE_PAYMENT_STATUS_FAILURE, COMMERCE_PAYMENT_STATUS_PENDING, COMMERCE_PAYMENT_STATUS_SUCCESS))) {
       throw new CommerceException(t('Invalid payment transaction status'));
     }
+    $this->status = $status;
   }
 
+  /**
+   * @return mixed
+   */
+  public function getUid() {
+    return $this->uid;
+  }
 
+  /**
+   * @param mixed $uid
+   */
+  public function setUid($uid) {
+    $this->uid = $uid;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getRevisionId() {
+    return $this->revision_id;
+  }
 }

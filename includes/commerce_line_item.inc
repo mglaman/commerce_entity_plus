@@ -2,19 +2,24 @@
 
 /**
  * @file
- * @todo.
+ * Contains CommerceLineItem class.
  */
 
 /**
  * Class CommerceLineItem
  */
 class CommerceLineItem extends CommerceEntity {
-  use CommerceEntityType;
+
+  /**
+   * @var string
+   */
+  public $type;
 
   /**
    * @var
    */
   public $line_item_id;
+
   /**
    * @var
    */
@@ -24,6 +29,7 @@ class CommerceLineItem extends CommerceEntity {
    * @var
    */
   public $line_item_label;
+
   /**
    * @var
    */
@@ -59,6 +65,7 @@ class CommerceLineItem extends CommerceEntity {
 
   /**
    * @return EntityDrupalWrapper
+   *
    * @throws \EntityMetadataWrapperException
    */
   public function getOrder() {
@@ -93,6 +100,18 @@ class CommerceLineItem extends CommerceEntity {
     $this->quantity = $quantity;
   }
 
+  /**
+   * @return mixed
+   */
+  public function getType() {
+    return $this->type;
+  }
 
+  /**
+   * @param mixed $type
+   */
+  public function setType($type) {
+    $this->type = $type;
+  }
 
 }
